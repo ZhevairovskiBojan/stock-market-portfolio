@@ -1,10 +1,20 @@
-import React from 'react';
+import React from "react";
 
-function Watchlist() {
+function Watchlist({ watchlist }) {
   return (
     <div>
       <h2>My Watchlist</h2>
-      <p>Your watchlist will be displayed here.</p>
+      {watchlist.length === 0 ? (
+        <p>Your watchlist is empty. Add some stocks from the Stocks page!</p>
+      ) : (
+        <ul>
+          {watchlist.map((stock) => (
+            <li key={stock.symbol}>
+              {stock.company} ({stock.symbol}) - ${stock.initial_price}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
